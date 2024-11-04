@@ -12,8 +12,6 @@ public class ConverteDados implements IConverteDados{
     public <T> T obterDados(String json, Class<T> classe) {
         try {
             return mapper.readValue(json, classe);
-        } catch (JsonMappingException e) {
-            throw new RuntimeException(e);
         } catch (JsonProcessingException e) {
             throw new RuntimeException(e);
         }
