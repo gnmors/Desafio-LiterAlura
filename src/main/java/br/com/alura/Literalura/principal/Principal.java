@@ -2,6 +2,7 @@ package br.com.alura.Literalura.principal;
 
 import br.com.alura.Literalura.model.DadosLivro;
 import br.com.alura.Literalura.model.Livro;
+import br.com.alura.Literalura.repository.LivroRepository;
 import br.com.alura.Literalura.service.ConsumoApi;
 
 import java.util.ArrayList;
@@ -16,7 +17,14 @@ public class Principal {
     private final String ENDERECO = "https://gutendex.com/books?search=";
     private List<DadosLivro> dadosLivros = new ArrayList<>();
 
+    private LivroRepository repositorio;
+    private List<Livro> livros = new ArrayList<>();
+
     private Optional<Livro> livroBusca;
+
+    public Principal(LivroRepository repositorio) {
+        this.repositorio = repositorio;
+    }
 
     public void exibeMenu() {
         var opcao = -1;
@@ -29,6 +37,7 @@ public class Principal {
                     5 - listar livros em um determinado idioma
                     6 - Top 10 livros mais baixados
                     7 - Buscar livro por nome de autor
+                    8 - Buscar autor por nome
                     
                     0 - Sair
                     """;
@@ -59,6 +68,9 @@ public class Principal {
                 case 7:
                     buscarLivroPorAutor();
                     break;
+                case 8:
+                    buscarAutorPorNome();
+                    break;
             }
 
         }
@@ -83,5 +95,8 @@ public class Principal {
     }
 
     private void buscarLivroPorAutor() {
+    }
+
+    private void buscarAutorPorNome() {
     }
 }

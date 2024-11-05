@@ -1,12 +1,14 @@
 package br.com.alura.Literalura.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
 @Table
 public class Livro {
+    @Id
+    @GeneratedValue
     private Long id;
+    @Column(unique = true)
     private String titulo;
     private String autor;
     private Integer datadeNascimento;
