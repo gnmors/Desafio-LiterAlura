@@ -2,29 +2,31 @@ package br.com.alura.Literalura.model;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
-@Table
+@Table(name = "livros")
 public class Livro {
-    @Id
-    @GeneratedValue
-    private Long id;
-    @Column(unique = true)
     private String titulo;
-    private String autor;
-    private Integer datadeNascimento;
-    private Integer dataDeFalecimento;
-    private String linguagem;
-    private Integer totalBaixado;
+    private String name;
+    private int downloads;
+    private String languages;
 
-    public Livro(DadosLivro dadosLivro) {
-    }
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private Autor autor;
 
-    public Long getId() {
-        return id;
-    }
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-    public void setId(Long id) {
-        this.id = id;
+    public Livro() {}
+
+    public Livro(String titulo, List<String> languages, int downloads, Autor autor) {
+        this.titulo = titulo;
+        this.autor = autor;
+        this.name = autor.getNome();
+        this.languages = languages.getFirst();
+        this.downloads = downloads;
     }
 
     public String getTitulo() {
@@ -35,53 +37,52 @@ public class Livro {
         this.titulo = titulo;
     }
 
-    public String getAutor() {
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getDownloads() {
+        return downloads;
+    }
+
+    public void setDownloads(int downloads) {
+        this.downloads = downloads;
+    }
+
+    public String getLanguages() {
+        return languages;
+    }
+
+    public void setLanguages(String languages) {
+        this.languages = languages;
+    }
+
+    public Autor getAutor() {
         return autor;
     }
 
-    public void setAutor(String autor) {
+    public void setAutor(Autor autor) {
         this.autor = autor;
     }
 
-    public String getLinguagem() {
-        return linguagem;
+    public Long getId() {
+        return id;
     }
 
-    public void setLinguagem(String linguagem) {
-        this.linguagem = linguagem;
-    }
-
-    public Integer getTotalBaixado() {
-        return totalBaixado;
-    }
-
-    public void setTotalBaixado(Integer totalBaixado) {
-        this.totalBaixado = totalBaixado;
-    }
-
-    public Integer getDatadeNascimento() {
-        return datadeNascimento;
-    }
-
-    public void setDatadeNascimento(Integer datadeNascimento) {
-        this.datadeNascimento = datadeNascimento;
-    }
-
-    public Integer getDataDeFalecimento() {
-        return dataDeFalecimento;
-    }
-
-    public void setDataDeFalecimento(Integer dataDeFalecimento) {
-        this.dataDeFalecimento = dataDeFalecimento;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     @Override
     public String toString() {
         return
-                "id=" + id +
-                ", titulo='" + titulo + '\'' +
-                ", autor='" + autor + '\'' +
-                ", linguagem='" + linguagem + '\'' +
-                ", totalBaixado=" + totalBaixado;
+                "titulo='" + titulo + '\'' +
+                ", name='" + name + '\'' +
+                ", downloads=" + downloads +
+                ", languages='" + languages;
     }
 }
