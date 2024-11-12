@@ -16,6 +16,9 @@ public class Livro {
     private String linguagem;
     private Integer totalBaixado;
 
+    public Livro(DadosLivro dadosLivro) {
+    }
+
     public Long getId() {
         return id;
     }

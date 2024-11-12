@@ -4,6 +4,7 @@ import br.com.alura.Literalura.model.DadosLivro;
 import br.com.alura.Literalura.model.Livro;
 import br.com.alura.Literalura.repository.LivroRepository;
 import br.com.alura.Literalura.service.ConsumoApi;
+import br.com.alura.Literalura.service.ConverteDados;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,6 +14,7 @@ import java.util.Scanner;
 public class Principal {
 
     private Scanner leitura = new Scanner(System.in);
+    private ConverteDados conversor = new ConverteDados();
     private ConsumoApi consumo = new ConsumoApi();
     private final String ENDERECO = "https://gutendex.com/books?search=";
     private List<DadosLivro> dadosLivros = new ArrayList<>();
@@ -77,6 +79,18 @@ public class Principal {
     }
 
     private void buscarLivro() {
+        DadosLivro dadosLivro = getDadosLivro();
+        Livro livro = new Livro(dadosLivro);
+        repositorio.save(livro);
+        System.out.println(dadosLivro);
+    }
+
+    private DadosLivro getDadosLivro() {
+        System.out.println("Digite o nome do livro para busca");
+        var nomeLivro = leitura.nextLine();
+        var json = consumo.obterDados(ENDERECO + nomeLivro.replace(" ", "+"));
+        DadosLivro dadosLivro = conversor.obterDados(json, DadosLivro.class);
+        return dadosLivro;
     }
 
     private void listarLivrosBuscados() {
