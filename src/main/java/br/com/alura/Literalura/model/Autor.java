@@ -80,11 +80,13 @@ public class Autor {
 
     @Override
     public String toString() {
-        return
-                ", nome='" + nome + '\'' +
-                ", anoDeNascimento=" + anoDeNascimento +
-                ", anoDeFalecimento=" + anoDeFalecimento +
-                ", title='" + title + '\'' +
-                ", livro=" + livro;
+        return""" 
+                **********************
+                Author: %s
+                Ano De Nascimento: %d
+                Ano Da Morte: %d
+                Livro: [%s]
+                ***********************
+                """.formatted(nome, anoDeNascimento, anoDeFalecimento, title);
     }
 }

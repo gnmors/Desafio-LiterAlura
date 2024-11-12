@@ -25,8 +25,15 @@ public class Livro {
         this.titulo = titulo;
         this.autor = autor;
         this.name = autor.getNome();
-        this.languages = languages.getFirst();
+        this.languages = languages.get(0);
         this.downloads = downloads;
+    }
+
+    public Livro(Livro livroEncontrado) {
+        this.titulo = livroEncontrado.titulo;
+        this.name = livroEncontrado.getAutor().getNome();
+        this.languages = livroEncontrado.languages;
+        this.downloads = livroEncontrado.downloads;
     }
 
     public String getTitulo() {
@@ -79,10 +86,13 @@ public class Livro {
 
     @Override
     public String toString() {
-        return
-                "titulo='" + titulo + '\'' +
-                ", name='" + name + '\'' +
-                ", downloads=" + downloads +
-                ", languages='" + languages;
+        return""" 
+                ******** LIVRO ********
+                Título: %s
+                Nome do Autor: %s
+                Linguagem: %s
+                Downloads: %d
+                ***********************
+                """.formatted(titulo, name, languages, downloads);
     }
 }
