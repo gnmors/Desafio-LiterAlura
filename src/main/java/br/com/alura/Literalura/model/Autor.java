@@ -82,7 +82,7 @@ public class Autor {
     public String toString() {
         return""" 
                 **********************
-                Author: %s
+                Autor: %s
                 Ano De Nascimento: %d
                 Ano Da Morte: %d
                 Livro: [%s]

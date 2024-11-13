@@ -18,7 +18,7 @@ public class Principal {
     private final Scanner leitura = new Scanner(System.in);
     private final ConverteDados conversor = new ConverteDados();
     private final ConsumoApi consumo = new ConsumoApi();
-    private final String ENDERECO = "https://gutendex.com/books?search=";
+    private final String ENDERECO = "https://gutendex.com/books/?search=";
     private List<Livro> livros = new ArrayList<>();
     private List<Autor> autor;
     private LivroRepository repository;
