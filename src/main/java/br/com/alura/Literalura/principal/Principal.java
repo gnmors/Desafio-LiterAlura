@@ -38,9 +38,6 @@ public class Principal {
                     3 - Listar autores registrados
                     4 - Listar autores vivos em um determinado ano
                     5 - listar livros em um determinado idioma
-                    6 - Top 10 livros mais baixados
-                    7 - Buscar livro por nome de autor
-                    8 - Buscar autor por nome
                     
                     0 - Sair
                     """;
@@ -65,31 +62,18 @@ public class Principal {
                 case 5:
                     listarLivroPorIdioma();
                     break;
-                case 6:
-                    top10MaisBaixados();
-                    break;
-                case 7:
-                    buscarLivroPorAutor();
-                    break;
-                case 8:
-                    buscarAutorPorNome();
-                    break;
             }
-
         }
     }
 
-    private void buscarAutorPorNome() {
-    }
-
-    private void buscarLivroPorAutor() {
-    }
-
-    private void top10MaisBaixados() {
-    }
 
     private void listarLivroPorIdioma() {
-        System.out.println("Encontar livro em qual idioma?");
+        System.out.println("""
+                Encontar livro em qual idioma?
+                - pt
+                - en
+                - fr
+                """);
         var idioma = leitura.nextLine();
         List<Livro> livros = repository.findAll();
         List<Livro> livrosEncontrados = livros.stream()
