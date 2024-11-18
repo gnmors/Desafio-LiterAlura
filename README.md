@@ -5,6 +5,7 @@
 ![IntelliJ IDEA](https://img.shields.io/badge/IntelliJIDEA-000000.svg?style=for-the-badge&logo=intellij-idea&logoColor=white)
 
 <img src="src/assets/badgeLiteralura.png" width="180" alt="Liter-Alura"/>
+
 ---
 ### 🚩 G7 ONE | Java e Spring Framework | 🚩
 #### 🌎 [@Alura](https://www.alura.com.br/) | [@One](https://www.oracle.com/br/)<br>
